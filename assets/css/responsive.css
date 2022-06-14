@@ -1,0 +1,45 @@
+@media screen and (max-width: 768px) {
+    .footer-content .link {
+      justify-content: center !important;
+    }
+    header .carousel .carousel-item {
+      height: auto !important;
+    }
+    .nav-desktop .nav-tabs.main-menu .nav-item {
+      width: 12.5%;
+      height: auto;
+      padding: 15px 5px;
+      justify-content: center !important;
+    }
+    .nav-desktop .nav-tabs.main-menu .nav-item.nav-login {
+      width: 15%;
+    }
+    .nav-desktop .nav-tabs.main-menu .nav-item .nav-greeting,
+    .nav-desktop .nav-tabs.main-menu .nav-item.nav-register {
+      width: 25%;
+    }
+    .nav-desktop .nav-tabs.main-menu .nav-item .dropdown-menu {
+      position: absolute;
+    }
+  }
+  @media screen and (max-width: 460px) {
+    .nav-desktop .nav-tabs.main-menu .nav-item {
+      width: 20%;
+      height: auto;
+      padding: 15px 5px;
+      justify-content: center !important;
+    }
+    .nav-desktop .nav-tabs.main-menu .nav-item.nav-login {
+      width: 25%;
+    }
+    .nav-desktop .nav-tabs.main-menu .nav-item.nav-register {
+      width: 40%;
+    }
+    .nav-desktop .nav-tabs.main-menu .nav-item .nav-greeting {
+      width: 30%;
+    }
+    .nav-desktop .nav-tabs.main-menu .nav-item .dropdown-menu {
+      position: absolute;
+    }
+  }
+  
