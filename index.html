@@ -1258,49 +1258,49 @@
             getItem(gameArray);
         });
 
-        function getItem(gameArray) {
-            let gameProvider = mobile_game_types[gameArray];
-            let maxLength = Math.max(mobile_game_types[gameArray].length);
-            let key = gameArray;
-            // if (key == 'togel' || key == 'lottery'){
-            //     gameArray = 'togel';
-            // }
+        // function getItem(gameArray) {
+        //     let gameProvider = mobile_game_types[gameArray];
+        //     let maxLength = Math.max(mobile_game_types[gameArray].length);
+        //     let key = gameArray;
+        //     // if (key == 'togel' || key == 'lottery'){
+        //     //     gameArray = 'togel';
+        //     // }
 
-            let resultArray = [];
-            for (let i = 0, ilen = maxLength; i < ilen; i++) {
-                let providerName = gameProvider[i].name;
-                let providerIMG = gameProvider[i].product;
-                let providerURL = gameProvider[i].product_url;
-                let providerHot = gameProvider[i].hot;
+        //     let resultArray = [];
+        //     for (let i = 0, ilen = maxLength; i < ilen; i++) {
+        //         let providerName = gameProvider[i].name;
+        //         let providerIMG = gameProvider[i].product;
+        //         let providerURL = gameProvider[i].product_url;
+        //         let providerHot = gameProvider[i].hot;
 
-                let path = 'https://play55club.com/assets/nav';
-                let pathProvider = 'https://play55club.com/assets/provider';
-                let urlPathLeave = path + '/' + gameArray + '/' + providerIMG + '.png';
-                let urlPathHover = 'https://play55club.com/assets/nav/hoverbg.png?201017';
-                let urlOnClickFunction = "openQuickTransferDialog('" + providerIMG + "','" + providerURL + "','" + providerName + "')";
-                let displayResult = "";
-                displayResult += '<div class="navbar-submenu-item px-3 position-relative">'
-                displayResult +=    '<a class="navbar-submenu-item-content row m-0 align-items-center justify-content-center" onclick="' + urlOnClickFunction + '">'
-                displayResult +=        '<img src="' + urlPathLeave + '" alt="' + providerName + '" class="img-responsive icon-img">'
-                displayResult +=        '<img src="' + urlPathHover + '" alt="' + providerName + '" class="img-responsive hover hover_opacity">'
-                displayResult +=        '<div class="text-center row m-0 justify-content-center mt-2 position-relative">'
-                displayResult +=            '<span class="title ' + providerHot + ' position-relative row m-0 justify-content-center">' + providerName + '<i class="tada animated infinite"></i>'                
-                displayResult +=            '</span>'
-                displayResult +=        '</div>'
-                displayResult +=    '</a>'
-                displayResult += '</div>'
+        //         let path = 'https://play55club.com/assets/nav';
+        //         let pathProvider = 'https://play55club.com/assets/provider';
+        //         let urlPathLeave = path + '/' + gameArray + '/' + providerIMG + '.png';
+        //         let urlPathHover = 'https://play55club.com/assets/nav/hoverbg.png?201017';
+        //         let urlOnClickFunction = "openQuickTransferDialog('" + providerIMG + "','" + providerURL + "','" + providerName + "')";
+        //         let displayResult = "";
+        //         displayResult += '<div class="navbar-submenu-item px-3 position-relative">'
+        //         displayResult +=    '<a class="navbar-submenu-item-content row m-0 align-items-center justify-content-center" onclick="' + urlOnClickFunction + '">'
+        //         displayResult +=        '<img src="' + urlPathLeave + '" alt="' + providerName + '" class="img-responsive icon-img">'
+        //         displayResult +=        '<img src="' + urlPathHover + '" alt="' + providerName + '" class="img-responsive hover hover_opacity">'
+        //         displayResult +=        '<div class="text-center row m-0 justify-content-center mt-2 position-relative">'
+        //         displayResult +=            '<span class="title ' + providerHot + ' position-relative row m-0 justify-content-center">' + providerName + '<i class="tada animated infinite"></i>'                
+        //         displayResult +=            '</span>'
+        //         displayResult +=        '</div>'
+        //         displayResult +=    '</a>'
+        //         displayResult += '</div>'
 
-                resultArray.push(displayResult);
-            }
+        //         resultArray.push(displayResult);
+        //     }
 
-            let providerResult = "";
-            let resultListing = resultArray.join(' ');
+        //     let providerResult = "";
+        //     let resultListing = resultArray.join(' ');
 
-            providerResult = '<div id="submenu-' + gameArray + '" class="row col-12 p-0 justify-content-center m-0 pb-2 hidden">' + resultListing + '</div>';
+        //     providerResult = '<div id="submenu-' + gameArray + '" class="row col-12 p-0 justify-content-center m-0 pb-2 hidden">' + resultListing + '</div>';
 
-            $('#nav-submenu')
-                .append(providerResult);
-        }
+        //     $('#nav-submenu')
+        //         .append(providerResult);
+        // }
 
         $(".navbar-submenu-item")
         .mouseenter(function () {
