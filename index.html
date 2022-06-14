@@ -1722,30 +1722,30 @@
                     $('.loading-spin')
                         .append('<i class="fas fa-spinner fa-spin"></i>');
                     setTimeout(function () {
-                        $('#vip')
-                            .load("https://play55club.com/vip-area", function () {
-                                $('.loading-spin')
-                                    .remove();
-                            });
+                        // $('#vip')
+                        //     .load("https://play55club.com/vip-area", function () {
+                        //         $('.loading-spin')
+                        //             .remove();
+                        //     });
 
-                        $('.download-app')
-                            .load("https://play55club.com/app-download", function () {
-                                //App Download QRCode
-                                var apkIndex = new QRCode("apkIndex");
-                                var iosIndex = new QRCode("iosIndex");
-                                var urlIndexAPK = $('#apkIndex')
-                                    .data('href');
-                                var urlIndexIOS = $('#iosIndex')
-                                    .data('href');
+                        // $('.download-app')
+                        //     .load("https://play55club.com/app-download", function () {
+                        //         //App Download QRCode
+                        //         var apkIndex = new QRCode("apkIndex");
+                        //         var iosIndex = new QRCode("iosIndex");
+                        //         var urlIndexAPK = $('#apkIndex')
+                        //             .data('href');
+                        //         var urlIndexIOS = $('#iosIndex')
+                        //             .data('href');
 
-                                apkIndex.makeCode(urlIndexAPK);
-                                iosIndex.makeCode(urlIndexIOS);
-                                $('.loading-spin')
-                                    .remove();
+                        //         apkIndex.makeCode(urlIndexAPK);
+                        //         iosIndex.makeCode(urlIndexIOS);
+                        //         $('.loading-spin')
+                        //             .remove();
 
-                                $('.load-vip')
-                                    .removeClass('d-none');
-                            });
+                        //         $('.load-vip')
+                        //             .removeClass('d-none');
+                        //     });
                     }, 3000);
                 });
         })(jQuery);
@@ -1970,35 +1970,35 @@
             $("#quick_transfer_btn")
                 .prop('disabled', true);
             setTimeout(2000);
-            $.ajax({
-                type: "POST"
-                , url: "https://play55club.com/transfer-wallet"
-                , data: { from_wallet: from_wallet, to_wallet: to_wallet, amount: amount, promotion_id: promotion_id, method: "quick-transfer" }
-                , success: function (result) {
-                    if (result['success'] == true) {
-                        $("#transferError")
-                            .removeClass("hidden");
-                        $("#transfer-message")
-                            .removeClass("text-danger");
-                        $("#transfer-message")
-                            .addClass("text-success");
-                        document.getElementById("transfer-message")
-                            .innerHTML = result['msg'];
-                        window.location.replace(urlLink);
-                    }
-                }
-                , error: function (xhr, status, error) {
-                    // delete myObject[firstKey];
-                    var err = eval("(" + xhr.responseText + ")");
-                    var firstKey = Object.keys(err.errors)[0];
-                    $("#transferError")
-                        .removeClass("hidden");
-                    document.getElementById("transfer-message")
-                        .innerHTML = err.errors[firstKey];
-                    $("#quick_transfer_btn")
-                        .prop('disabled', false);
-                }
-            });
+            // $.ajax({
+            //     type: "POST"
+            //     , url: "https://play55club.com/transfer-wallet"
+            //     , data: { from_wallet: from_wallet, to_wallet: to_wallet, amount: amount, promotion_id: promotion_id, method: "quick-transfer" }
+            //     , success: function (result) {
+            //         if (result['success'] == true) {
+            //             $("#transferError")
+            //                 .removeClass("hidden");
+            //             $("#transfer-message")
+            //                 .removeClass("text-danger");
+            //             $("#transfer-message")
+            //                 .addClass("text-success");
+            //             document.getElementById("transfer-message")
+            //                 .innerHTML = result['msg'];
+            //             window.location.replace(urlLink);
+            //         }
+            //     }
+            //     , error: function (xhr, status, error) {
+            //         // delete myObject[firstKey];
+            //         var err = eval("(" + xhr.responseText + ")");
+            //         var firstKey = Object.keys(err.errors)[0];
+            //         $("#transferError")
+            //             .removeClass("hidden");
+            //         document.getElementById("transfer-message")
+            //             .innerHTML = err.errors[firstKey];
+            //         $("#quick_transfer_btn")
+            //             .prop('disabled', false);
+            //     }
+            // });
         }
 
         function onClickClose() {
