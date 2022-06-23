@@ -12,14 +12,15 @@
             margin:"",padding:"",border:"Width"},function(a,b){n.cssHooks[a+b]={expand:function(c){for(var d=0,e={},f="string"==typeof c?c.split(" "):[c];d<4;d++)e[a+U[d]+b]=f[d]||f[d-2]||f[0];return e}},Ma.test(a)||(n.cssHooks[a+b].set=cb)}),n.fn.extend({css:function(a,b){return X(this,function(a,b,c){var d,e,f={},g=0;if(n.isArray(b)){for(d=Qa(a),e=b.length;g<e;g++)f[b[g]]=n.css(a,b[g],!1,d);return f}return void 0!==c?n.style(a,b,c):n.css(a,b)},a,b,arguments.length>1)},show:function(){return bb(this,!0)},hide:function(){return bb(this)},toggle:function(a){return"boolean"==typeof a?a?this.show():this.hide():this.each(function(){V(this)?n(this).show():n(this).hide()})}});function fb(a,b,c,d,e){return new fb.prototype.init(a,b,c,d,e)}n.Tween=fb,fb.prototype={constructor:fb,init:function(a,b,c,d,e,f){this.elem=a,this.prop=c,this.easing=e||n.easing._default,this.options=b,this.start=this.now=this.cur(),this.end=d,this.unit=f||(n.cssNumber[c]?"":"px")},cur:function(){var a=fb.propHooks[this.prop];return a&&a.get?a.get(this):fb.propHooks._default.get(this)},run:function(a){var b,c=fb.propHooks[this.prop];return this.options.duration?this.pos=b=n.easing[this.easing](a,this.options.duration*a,0,1,this.options.duration):this.pos=b=a,this.now=(this.end-this.start)*b+this.start,this.options.step&&this.options.step.call(this.elem,this.now,this),c&&c.set?c.set(this):fb.propHooks._default.set(this),this}},fb.prototype.init.prototype=fb.prototype,fb.propHooks={_default:{get:function(a){var b;return 1!==a.elem.nodeType||null!=a.elem[a.prop]&&null==a.elem.style[a.prop]?a.elem[a.prop]:(b=n.css(a.elem,a.prop,""),b&&"auto"!==b?b:0)},set:function(a){n.fx.step[a.prop]?n.fx.step[a.prop](a):1!==a.elem.nodeType||null==a.elem.style[n.cssProps[a.prop]]&&!n.cssHooks[a.prop]?a.elem[a.prop]=a.now:n.style(a.elem,a.prop,a.now+a.unit)}}},fb.propHooks.scrollTop=fb.propHooks.scrollLeft={set:function(a){a.elem.nodeType&&a.elem.parentNode&&(a.elem[a.prop]=a.now)}},n.easing={linear:function(a){return a},swing:function(a){return.5-Math.cos(a*Math.PI)/2},_default:"swing"},n.fx=fb.prototype.init,n.fx.step={};var gb,hb,ib=/^(?:toggle|show|hide)$/,jb=/queueHooks$/;function kb(){return a.setTimeout(function(){gb=void 0}),gb=n.now()}function lb(a,b){var c,d={height:a},e=0;for(b=b?1:0;e<4;e+=2-b)c=U[e],d["margin"+c]=d["padding"+c]=a;return b&&(d.opacity=d.width=a),d}function mb(a,b,c){for(var d,e=(pb.tweeners[b]||[]).concat(pb.tweeners["*"]),f=0,g=e.length;f<g;f++)if(d=e[f].call(c,b,a))return d}function nb(a,b,c){var d,e,f,g,h,i,j,k,m=this,o={},p=a.style,q=a.nodeType&&V(a),r=n._data(a,"fxshow");c.queue||(h=n._queueHooks(a,"fx"),null==h.unqueued&&(h.unqueued=0,i=h.empty.fire,h.empty.fire=function(){h.unqueued||i()}),h.unqueued++,m.always(function(){m.always(function(){h.unqueued--,n.queue(a,"fx").length||h.empty.fire()})})),1===a.nodeType&&("height"in b||"width"in b)&&(c.overflow=[p.overflow,p.overflowX,p.overflowY],j=n.css(a,"display"),"inline"===(k="none"===j?n._data(a,"olddisplay")||La(a.nodeName):j)&&"none"===n.css(a,"float")&&(l.inlineBlockNeedsLayout&&"inline"!==La(a.nodeName)?p.zoom=1:p.display="inline-block")),c.overflow&&(p.overflow="hidden",l.shrinkWrapBlocks()||m.always(function(){p.overflow=c.overflow[0],p.overflowX=c.overflow[1],p.overflowY=c.overflow[2]}));for(d in b)if(e=b[d],ib.exec(e)){if(delete b[d],f=f||"toggle"===e,e===(q?"hide":"show")){if("show"!==e||!r||void 0===r[d])continue;q=!0}o[d]=r&&r[d]||n.style(a,d)}else j=void 0;if(n.isEmptyObject(o))"inline"===("none"===j?La(a.nodeName):j)&&(p.display=j);else{r?"hidden"in r&&(q=r.hidden):r=n._data(a,"fxshow",{}),f&&(r.hidden=!q),q?n(a).show():m.done(function(){n(a).hide()}),m.done(function(){var b;n._removeData(a,"fxshow");for(b in o)n.style(a,b,o[b])});for(d in o)g=mb(q?r[d]:0,d,m),d in r||(r[d]=g.start,q&&(g.end=g.start,g.start="width"===d||"height"===d?1:0))}}function ob(a,b){var c,d,e,f,g;for(c in a)if(d=n.camelCase(c),e=b[d],f=a[c],n.isArray(f)&&(e=f[1],f=a[c]=f[0]),c!==d&&(a[d]=f,delete a[c]),(g=n.cssHooks[d])&&"expand"in g){f=g.expand(f),delete a[d];for(c in f)c in a||(a[c]=f[c],b[c]=e)}else b[d]=e}function pb(a,b,c){var d,e,f=0,g=pb.prefilters.length,h=n.Deferred().always(function(){delete i.elem}),i=function(){if(e)return!1;for(var b=gb||kb(),c=Math.max(0,j.startTime+j.duration-b),d=c/j.duration||0,f=1-d,g=0,i=j.tweens.length;g<i;g++)j.tweens[g].run(f);return h.notifyWith(a,[j,f,c]),f<1&&i?c:(h.resolveWith(a,[j]),!1)},j=h.promise({elem:a,props:n.extend({},b),opts:n.extend(!0,{specialEasing:{},easing:n.easing._default},c),originalProperties:b,originalOptions:c,startTime:gb||kb(),duration:c.duration,tweens:[],createTween:function(b,c){var d=n.Tween(a,j.opts,b,c,j.opts.specialEasing[b]||j.opts.easing);return j.tweens.push(d),d},stop:function(b){var c=0,d=b?j.tweens.length:0;if(e)return this;for(e=!0;c<d;c++)j.tweens[c].run(1);return b?(h.notifyWith(a,[j,1,0]),h.resolveWith(a,[j,b])):h.rejectWith(a,[j,b]),this}}),k=j.props;for(ob(k,j.opts.specialEasing);f<g;f++)if(d=pb.prefilters[f].call(j,a,k,j.opts))return n.isFunction(d.stop)&&(n._queueHooks(j.elem,j.opts.queue).stop=n.proxy(d.stop,d)),d;return n.map(k,mb,j),n.isFunction(j.opts.start)&&j.opts.start.call(a,j),n.fx.timer(n.extend(i,{elem:a,anim:j,queue:j.opts.queue})),j.progress(j.opts.progress).done(j.opts.done,j.opts.complete).fail(j.opts.fail).always(j.opts.always)}n.Animation=n.extend(pb,{tweeners:{"*":[function(a,b){var c=this.createTween(a,b);return W(c.elem,a,T.exec(b),c),c}]},tweener:function(a,b){n.isFunction(a)?(b=a,a=["*"]):a=a.match(F);for(var c,d=0,e=a.length;d<e;d++)c=a[d],pb.tweeners[c]=pb.tweeners[c]||[],pb.tweeners[c].unshift(b)},prefilters:[nb],prefilter:function(a,b){b?pb.prefilters.unshift(a):pb.prefilters.push(a)}}),n.speed=function(a,b,c){var d=a&&"object"==typeof a?n.extend({},a):{complete:c||!c&&b||n.isFunction(a)&&a,duration:a,easing:c&&b||b&&!n.isFunction(b)&&b};return d.duration=n.fx.off?0:"number"==typeof d.duration?d.duration:d.duration in n.fx.speeds?n.fx.speeds[d.duration]:n.fx.speeds._default,null!=d.queue&&!0!==d.queue||(d.queue="fx"),d.old=d.complete,d.complete=function(){n.isFunction(d.old)&&d.old.call(this),d.queue&&n.dequeue(this,d.queue)},d},n.fn.extend({fadeTo:function(a,b,c,d){return this.filter(V).css("opacity",0).show().end().animate({opacity:b},a,c,d)},animate:function(a,b,c,d){var e=n.isEmptyObject(a),f=n.speed(b,c,d),g=function(){var b=pb(this,n.extend({},a),f);(e||n._data(this,"finish"))&&b.stop(!0)};return g.finish=g,e||!1===f.queue?this.each(g):this.queue(f.queue,g)},stop:function(a,b,c){var d=function(a){var b=a.stop;delete a.stop,b(c)};return"string"!=typeof a&&(c=b,b=a,a=void 0),b&&!1!==a&&this.queue(a||"fx",[]),this.each(function(){var b=!0,e=null!=a&&a+"queueHooks",f=n.timers,g=n._data(this);if(e)g[e]&&g[e].stop&&d(g[e]);else for(e in g)g[e]&&g[e].stop&&jb.test(e)&&d(g[e]);for(e=f.length;e--;)f[e].elem!==this||null!=a&&f[e].queue!==a||(f[e].anim.stop(c),b=!1,f.splice(e,1));!b&&c||n.dequeue(this,a)})},finish:function(a){return!1!==a&&(a=a||"fx"),this.each(function(){var b,c=n._data(this),d=c[a+"queue"],e=c[a+"queueHooks"],f=n.timers,g=d?d.length:0;for(c.finish=!0,n.queue(this,a,[]),e&&e.stop&&e.stop.call(this,!0),b=f.length;b--;)f[b].elem===this&&f[b].queue===a&&(f[b].anim.stop(!0),f.splice(b,1));for(b=0;b<g;b++)d[b]&&d[b].finish&&d[b].finish.call(this);delete c.finish})}}),n.each(["toggle","show","hide"],function(a,b){var c=n.fn[b];n.fn[b]=function(a,d,e){return null==a||"boolean"==typeof a?c.apply(this,arguments):this.animate(lb(b,!0),a,d,e)}}),n.each({slideDown:lb("show"),slideUp:lb("hide"),slideToggle:lb("toggle"),fadeIn:{opacity:"show"},fadeOut:{opacity:"hide"},fadeToggle:{opacity:"toggle"}},function(a,b){n.fn[a]=function(a,c,d){return this.animate(b,a,c,d)}}),n.timers=[],n.fx.tick=function(){var a,b=n.timers,c=0;for(gb=n.now();c<b.length;c++)(a=b[c])()||b[c]!==a||b.splice(c--,1);b.length||n.fx.stop(),gb=void 0},n.fx.timer=function(a){n.timers.push(a),a()?n.fx.start():n.timers.pop()},n.fx.interval=13,n.fx.start=function(){hb||(hb=a.setInterval(n.fx.tick,n.fx.interval))},n.fx.stop=function(){a.clearInterval(hb),hb=null},n.fx.speeds={slow:600,fast:200,_default:400},n.fn.delay=function(b,c){return b=n.fx?n.fx.speeds[b]||b:b,c=c||"fx",this.queue(c,function(c,d){var e=a.setTimeout(c,b);d.stop=function(){a.clearTimeout(e)}})},function(){var a,b=d.createElement("input"),c=d.createElement("div"),e=d.createElement("select"),f=e.appendChild(d.createElement("option"));c=d.createElement("div"),c.setAttribute("className","t"),c.innerHTML="  <link/><table></table><a href='/a'>a</a><input type='checkbox'/>",a=c.getElementsByTagName("a")[0],b.setAttribute("type","checkbox"),c.appendChild(b),a=c.getElementsByTagName("a")[0],a.style.cssText="top:1px",l.getSetAttribute="t"!==c.className,l.style=/top/.test(a.getAttribute("style")),l.hrefNormalized="/a"===a.getAttribute("href"),l.checkOn=!!b.value,l.optSelected=f.selected,l.enctype=!!d.createElement("form").enctype,e.disabled=!0,l.optDisabled=!f.disabled,b=d.createElement("input"),b.setAttribute("value",""),l.input=""===b.getAttribute("value"),b.value="t",b.setAttribute("type","radio"),l.radioValue="t"===b.value}();var qb=/\r/g,rb=/[\x20\t\r\n\f]+/g;n.fn.extend({val:function(a){var b,c,d,e=this[0];{if(arguments.length)return d=n.isFunction(a),this.each(function(c){var e;1===this.nodeType&&(e=d?a.call(this,c,n(this).val()):a,null==e?e="":"number"==typeof e?e+="":n.isArray(e)&&(e=n.map(e,function(a){return null==a?"":a+""})),(b=n.valHooks[this.type]||n.valHooks[this.nodeName.toLowerCase()])&&"set"in b&&void 0!==b.set(this,e,"value")||(this.value=e))});if(e)return(b=n.valHooks[e.type]||n.valHooks[e.nodeName.toLowerCase()])&&"get"in b&&void 0!==(c=b.get(e,"value"))?c:(c=e.value,"string"==typeof c?c.replace(qb,""):null==c?"":c)}}}),n.extend({valHooks:{option:{get:function(a){var b=n.find.attr(a,"value");return null!=b?b:n.trim(n.text(a)).replace(rb," ")}},select:{get:function(a){for(var b,c,d=a.options,e=a.selectedIndex,f="select-one"===a.type||e<0,g=f?null:[],h=f?e+1:d.length,i=e<0?h:f?e:0;i<h;i++)if(c=d[i],(c.selected||i===e)&&(l.optDisabled?!c.disabled:null===c.getAttribute("disabled"))&&(!c.parentNode.disabled||!n.nodeName(c.parentNode,"optgroup"))){if(b=n(c).val(),f)return b;g.push(b)}return g},set:function(a,b){var c,d,e=a.options,f=n.makeArray(b),g=e.length;while(g--)if(d=e[g],n.inArray(n.valHooks.option.get(d),f)>-1)try{d.selected=c=!0}catch(h){d.scrollHeight}else d.selected=!1;return c||(a.selectedIndex=-1),e}}}}),n.each(["radio","checkbox"],function(){n.valHooks[this]={set:function(a,b){if(n.isArray(b))return a.checked=n.inArray(n(a).val(),b)>-1}},l.checkOn||(n.valHooks[this].get=function(a){return null===a.getAttribute("value")?"on":a.value})});var sb,tb,ub=n.expr.attrHandle,vb=/^(?:checked|selected)$/i,wb=l.getSetAttribute,xb=l.input;n.fn.extend({attr:function(a,b){return X(this,n.attr,a,b,arguments.length>1)},removeAttr:function(a){return this.each(function(){n.removeAttr(this,a)})}}),n.extend({attr:function(a,b,c){var d,e,f=a.nodeType;if(3!==f&&8!==f&&2!==f)return void 0===a.getAttribute?n.prop(a,b,c):(1===f&&n.isXMLDoc(a)||(b=b.toLowerCase(),e=n.attrHooks[b]||(n.expr.match.bool.test(b)?tb:sb)),void 0!==c?null===c?void n.removeAttr(a,b):e&&"set"in e&&void 0!==(d=e.set(a,c,b))?d:(a.setAttribute(b,c+""),c):e&&"get"in e&&null!==(d=e.get(a,b))?d:(d=n.find.attr(a,b),null==d?void 0:d))},attrHooks:{type:{set:function(a,b){if(!l.radioValue&&"radio"===b&&n.nodeName(a,"input")){var c=a.value;return a.setAttribute("type",b),c&&(a.value=c),b}}}},removeAttr:function(a,b){var c,d,e=0,f=b&&b.match(F);if(f&&1===a.nodeType)while(c=f[e++])d=n.propFix[c]||c,n.expr.match.bool.test(c)?xb&&wb||!vb.test(c)?a[d]=!1:a[n.camelCase("default-"+c)]=a[d]=!1:n.attr(a,c,""),a.removeAttribute(wb?c:d)}}),tb={set:function(a,b,c){return!1===b?n.removeAttr(a,c):xb&&wb||!vb.test(c)?a.setAttribute(!wb&&n.propFix[c]||c,c):a[n.camelCase("default-"+c)]=a[c]=!0,c}},n.each(n.expr.match.bool.source.match(/\w+/g),function(a,b){var c=ub[b]||n.find.attr;xb&&wb||!vb.test(b)?ub[b]=function(a,b,d){var e,f;return d||(f=ub[b],ub[b]=e,e=null!=c(a,b,d)?b.toLowerCase():null,ub[b]=f),e}:ub[b]=function(a,b,c){if(!c)return a[n.camelCase("default-"+b)]?b.toLowerCase():null}}),xb&&wb||(n.attrHooks.value={set:function(a,b,c){if(!n.nodeName(a,"input"))return sb&&sb.set(a,b,c);a.defaultValue=b}}),wb||(sb={set:function(a,b,c){var d=a.getAttributeNode(c);if(d||a.setAttributeNode(d=a.ownerDocument.createAttribute(c)),d.value=b+="","value"===c||b===a.getAttribute(c))return b}},ub.id=ub.name=ub.coords=function(a,b,c){var d;if(!c)return(d=a.getAttributeNode(b))&&""!==d.value?d.value:null},n.valHooks.button={get:function(a,b){var c=a.getAttributeNode(b);if(c&&c.specified)return c.value},set:sb.set},n.attrHooks.contenteditable={set:function(a,b,c){sb.set(a,""!==b&&b,c)}},n.each(["width","height"],function(a,b){n.attrHooks[b]={set:function(a,c){if(""===c)return a.setAttribute(b,"auto"),c}}})),l.style||(n.attrHooks.style={get:function(a){return a.style.cssText||void 0},set:function(a,b){return a.style.cssText=b+""}});var yb=/^(?:input|select|textarea|button|object)$/i,zb=/^(?:a|area)$/i;n.fn.extend({prop:function(a,b){return X(this,n.prop,a,b,arguments.length>1)},removeProp:function(a){return a=n.propFix[a]||a,this.each(function(){try{this[a]=void 0,delete this[a]}catch(b){}})}}),n.extend({prop:function(a,b,c){var d,e,f=a.nodeType;if(3!==f&&8!==f&&2!==f)return 1===f&&n.isXMLDoc(a)||(b=n.propFix[b]||b,e=n.propHooks[b]),void 0!==c?e&&"set"in e&&void 0!==(d=e.set(a,c,b))?d:a[b]=c:e&&"get"in e&&null!==(d=e.get(a,b))?d:a[b]},propHooks:{tabIndex:{get:function(a){var b=n.find.attr(a,"tabindex");return b?parseInt(b,10):yb.test(a.nodeName)||zb.test(a.nodeName)&&a.href?0:-1}}},propFix:{for:"htmlFor",class:"className"}}),l.hrefNormalized||n.each(["href","src"],function(a,b){n.propHooks[b]={get:function(a){return a.getAttribute(b,4)}}}),l.optSelected||(n.propHooks.selected={get:function(a){var b=a.parentNode;return b&&(b.selectedIndex,b.parentNode&&b.parentNode.selectedIndex),null},set:function(a){var b=a.parentNode;b&&(b.selectedIndex,b.parentNode&&b.parentNode.selectedIndex)}}),n.each(["tabIndex","readOnly","maxLength","cellSpacing","cellPadding","rowSpan","colSpan","useMap","frameBorder","contentEditable"],function(){n.propFix[this.toLowerCase()]=this}),l.enctype||(n.propFix.enctype="encoding");var Ab=/[\t\r\n\f]/g;function Bb(a){return n.attr(a,"class")||""}n.fn.extend({addClass:function(a){var b,c,d,e,f,g,h,i=0;if(n.isFunction(a))return this.each(function(b){n(this).addClass(a.call(this,b,Bb(this)))});if("string"==typeof a&&a){b=a.match(F)||[];while(c=this[i++])if(e=Bb(c),d=1===c.nodeType&&(" "+e+" ").replace(Ab," ")){g=0;while(f=b[g++])d.indexOf(" "+f+" ")<0&&(d+=f+" ");h=n.trim(d),e!==h&&n.attr(c,"class",h)}}return this},removeClass:function(a){var b,c,d,e,f,g,h,i=0;if(n.isFunction(a))return this.each(function(b){n(this).removeClass(a.call(this,b,Bb(this)))});if(!arguments.length)return this.attr("class","");if("string"==typeof a&&a){b=a.match(F)||[];while(c=this[i++])if(e=Bb(c),d=1===c.nodeType&&(" "+e+" ").replace(Ab," ")){g=0;while(f=b[g++])while(d.indexOf(" "+f+" ")>-1)d=d.replace(" "+f+" "," ");h=n.trim(d),e!==h&&n.attr(c,"class",h)}}return this},toggleClass:function(a,b){var c=typeof a;return"boolean"==typeof b&&"string"===c?b?this.addClass(a):this.removeClass(a):n.isFunction(a)?this.each(function(c){n(this).toggleClass(a.call(this,c,Bb(this),b),b)}):this.each(function(){var b,d,e,f;if("string"===c){d=0,e=n(this),f=a.match(F)||[];while(b=f[d++])e.hasClass(b)?e.removeClass(b):e.addClass(b)}else void 0!==a&&"boolean"!==c||(b=Bb(this),b&&n._data(this,"__className__",b),n.attr(this,"class",b||!1===a?"":n._data(this,"__className__")||""))})},hasClass:function(a){var b,c,d=0;b=" "+a+" ";while(c=this[d++])if(1===c.nodeType&&(" "+Bb(c)+" ").replace(Ab," ").indexOf(b)>-1)return!0;return!1}}),n.each("blur focus focusin focusout load resize scroll unload click dblclick mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave change select submit keydown keypress keyup error contextmenu".split(" "),function(a,b){n.fn[b]=function(a,c){return arguments.length>0?this.on(b,null,a,c):this.trigger(b)}}),n.fn.extend({hover:function(a,b){return this.mouseenter(a).mouseleave(b||a)}});var Cb=a.location,Db=n.now(),Eb=/\?/,Fb=/(,)|(\[|{)|(}|])|"(?:[^"\\\r\n]|\\["\\\/bfnrt]|\\u[\da-fA-F]{4})*"\s*:?|true|false|null|-?(?!0\d)\d+(?:\.\d+|)(?:[eE][+-]?\d+|)/g;n.parseJSON=function(b){if(a.JSON&&a.JSON.parse)return a.JSON.parse(b+"");var c,d=null,e=n.trim(b+"");return e&&!n.trim(e.replace(Fb,function(a,b,e,f){return c&&b&&(d=0),0===d?a:(c=e||b,d+=!f-!e,"")}))?Function("return "+e)():n.error("Invalid JSON: "+b)},n.parseXML=function(b){var c,d;if(!b||"string"!=typeof b)return null;try{a.DOMParser?(d=new a.DOMParser,c=d.parseFromString(b,"text/xml")):(c=new a.ActiveXObject("Microsoft.XMLDOM"),c.async="false",c.loadXML(b))}catch(e){c=void 0}return c&&c.documentElement&&!c.getElementsByTagName("parsererror").length||n.error("Invalid XML: "+b),c};var Gb=/#.*$/,Hb=/([?&])_=[^&]*/,Ib=/^(.*?):[ \t]*([^\r\n]*)\r?$/gm,Jb=/^(?:about|app|app-storage|.+-extension|file|res|widget):$/,Kb=/^(?:GET|HEAD)$/,Lb=/^\/\//,Mb=/^([\w.+-]+:)(?:\/\/(?:[^\/?#]*@|)([^\/?#:]*)(?::(\d+)|)|)/,Nb={},Ob={},Pb="*/".concat("*"),Qb=Cb.href,Rb=Mb.exec(Qb.toLowerCase())||[];function Sb(a){return function(b,c){"string"!=typeof b&&(c=b,b="*");var d,e=0,f=b.toLowerCase().match(F)||[];if(n.isFunction(c))while(d=f[e++])"+"===d.charAt(0)?(d=d.slice(1)||"*",(a[d]=a[d]||[]).unshift(c)):(a[d]=a[d]||[]).push(c)}}function Tb(a,b,c,d){var e={},f=a===Ob;function g(h){var i;return e[h]=!0,n.each(a[h]||[],function(a,h){var j=h(b,c,d);return"string"!=typeof j||f||e[j]?f?!(i=j):void 0:(b.dataTypes.unshift(j),g(j),!1)}),i}return g(b.dataTypes[0])||!e["*"]&&g("*")}function Ub(a,b){var c,d,e=n.ajaxSettings.flatOptions||{};for(d in b)void 0!==b[d]&&((e[d]?a:c||(c={}))[d]=b[d]);return c&&n.extend(!0,a,c),a}function Vb(a,b,c){var d,e,f,g,h=a.contents,i=a.dataTypes;while("*"===i[0])i.shift(),void 0===e&&(e=a.mimeType||b.getResponseHeader("Content-Type"));if(e)for(g in h)if(h[g]&&h[g].test(e)){i.unshift(g);break}if(i[0]in c)f=i[0];else{for(g in c){if(!i[0]||a.converters[g+" "+i[0]]){f=g;break}d||(d=g)}f=f||d}if(f)return f!==i[0]&&i.unshift(f),c[f]}function Wb(a,b,c,d){var e,f,g,h,i,j={},k=a.dataTypes.slice();if(k[1])for(g in a.converters)j[g.toLowerCase()]=a.converters[g];f=k.shift();while(f)if(a.responseFields[f]&&(c[a.responseFields[f]]=b),!i&&d&&a.dataFilter&&(b=a.dataFilter(b,a.dataType)),i=f,f=k.shift())if("*"===f)f=i;else if("*"!==i&&i!==f){if(!(g=j[i+" "+f]||j["* "+f]))for(e in j)if(h=e.split(" "),h[1]===f&&(g=j[i+" "+h[0]]||j["* "+h[0]])){!0===g?g=j[e]:!0!==j[e]&&(f=h[0],k.unshift(h[1]));break}if(!0!==g)if(g&&a.throws)b=g(b);else try{b=g(b)}catch(l){return{state:"parsererror",error:g?l:"No conversion from "+i+" to "+f}}}return{state:"success",data:b}}n.extend({active:0,lastModified:{},etag:{},ajaxSettings:{url:Qb,type:"GET",isLocal:Jb.test(Rb[1]),global:!0,processData:!0,async:!0,contentType:"application/x-www-form-urlencoded; charset=UTF-8",accepts:{"*":Pb,text:"text/plain",html:"text/html",xml:"application/xml, text/xml",json:"application/json, text/javascript"},contents:{xml:/\bxml\b/,html:/\bhtml/,json:/\bjson\b/},responseFields:{xml:"responseXML",text:"responseText",json:"responseJSON"},converters:{"* text":String,"text html":!0,"text json":n.parseJSON,"text xml":n.parseXML},flatOptions:{url:!0,context:!0}},ajaxSetup:function(a,b){return b?Ub(Ub(a,n.ajaxSettings),b):Ub(n.ajaxSettings,a)},ajaxPrefilter:Sb(Nb),ajaxTransport:Sb(Ob),ajax:function(b,c){"object"==typeof b&&(c=b,b=void 0),c=c||{};var d,e,f,g,h,i,j,k,l=n.ajaxSetup({},c),m=l.context||l,o=l.context&&(m.nodeType||m.jquery)?n(m):n.event,p=n.Deferred(),q=n.Callbacks("once memory"),r=l.statusCode||{},s={},t={},u=0,v="canceled",w={readyState:0,getResponseHeader:function(a){var b;if(2===u){if(!k){k={};while(b=Ib.exec(g))k[b[1].toLowerCase()]=b[2]}b=k[a.toLowerCase()]}return null==b?null:b},getAllResponseHeaders:function(){return 2===u?g:null},setRequestHeader:function(a,b){var c=a.toLowerCase();return u||(a=t[c]=t[c]||a,s[a]=b),this},overrideMimeType:function(a){return u||(l.mimeType=a),this},statusCode:function(a){var b;if(a)if(u<2)for(b in a)r[b]=[r[b],a[b]];else w.always(a[w.status]);return this},abort:function(a){var b=a||v;return j&&j.abort(b),x(0,b),this}};if(p.promise(w).complete=q.add,w.success=w.done,w.error=w.fail,l.url=((b||l.url||Qb)+"").replace(Gb,"").replace(Lb,Rb[1]+"//"),l.type=c.method||c.type||l.method||l.type,l.dataTypes=n.trim(l.dataType||"*").toLowerCase().match(F)||[""],null==l.crossDomain&&(d=Mb.exec(l.url.toLowerCase()),l.crossDomain=!(!d||d[1]===Rb[1]&&d[2]===Rb[2]&&(d[3]||("http:"===d[1]?"80":"443"))===(Rb[3]||("http:"===Rb[1]?"80":"443")))),l.data&&l.processData&&"string"!=typeof l.data&&(l.data=n.param(l.data,l.traditional)),Tb(Nb,l,c,w),2===u)return w;i=n.event&&l.global,i&&0==n.active++&&n.event.trigger("ajaxStart"),l.type=l.type.toUpperCase(),l.hasContent=!Kb.test(l.type),f=l.url,l.hasContent||(l.data&&(f=l.url+=(Eb.test(f)?"&":"?")+l.data,delete l.data),!1===l.cache&&(l.url=Hb.test(f)?f.replace(Hb,"$1_="+Db++):f+(Eb.test(f)?"&":"?")+"_="+Db++)),l.ifModified&&(n.lastModified[f]&&w.setRequestHeader("If-Modified-Since",n.lastModified[f]),n.etag[f]&&w.setRequestHeader("If-None-Match",n.etag[f])),(l.data&&l.hasContent&&!1!==l.contentType||c.contentType)&&w.setRequestHeader("Content-Type",l.contentType),w.setRequestHeader("Accept",l.dataTypes[0]&&l.accepts[l.dataTypes[0]]?l.accepts[l.dataTypes[0]]+("*"!==l.dataTypes[0]?", "+Pb+"; q=0.01":""):l.accepts["*"]);for(e in l.headers)w.setRequestHeader(e,l.headers[e]);if(l.beforeSend&&(!1===l.beforeSend.call(m,w,l)||2===u))return w.abort();v="abort";for(e in{success:1,error:1,complete:1})w[e](l[e]);if(j=Tb(Ob,l,c,w)){if(w.readyState=1,i&&o.trigger("ajaxSend",[w,l]),2===u)return w;l.async&&l.timeout>0&&(h=a.setTimeout(function(){w.abort("timeout")},l.timeout));try{u=1,j.send(s,x)}catch(y){if(!(u<2))throw y;x(-1,y)}}else x(-1,"No Transport");function x(b,c,d,e){var k,s,t,v,x,y=c;2!==u&&(u=2,h&&a.clearTimeout(h),j=void 0,g=e||"",w.readyState=b>0?4:0,k=b>=200&&b<300||304===b,d&&(v=Vb(l,w,d)),v=Wb(l,v,w,k),k?(l.ifModified&&(x=w.getResponseHeader("Last-Modified"),x&&(n.lastModified[f]=x),(x=w.getResponseHeader("etag"))&&(n.etag[f]=x)),204===b||"HEAD"===l.type?y="nocontent":304===b?y="notmodified":(y=v.state,s=v.data,t=v.error,k=!t)):(t=y,!b&&y||(y="error",b<0&&(b=0))),w.status=b,w.statusText=(c||y)+"",k?p.resolveWith(m,[s,y,w]):p.rejectWith(m,[w,y,t]),w.statusCode(r),r=void 0,i&&o.trigger(k?"ajaxSuccess":"ajaxError",[w,l,k?s:t]),q.fireWith(m,[w,y]),i&&(o.trigger("ajaxComplete",[w,l]),--n.active||n.event.trigger("ajaxStop")))}return w},getJSON:function(a,b,c){return n.get(a,b,c,"json")},getScript:function(a,b){return n.get(a,void 0,b,"script")}}),n.each(["get","post"],function(a,b){n[b]=function(a,c,d,e){return n.isFunction(c)&&(e=e||d,d=c,c=void 0),n.ajax(n.extend({url:a,type:b,dataType:e,data:c,success:d},n.isPlainObject(a)&&a))}}),n._evalUrl=function(a){return n.ajax({url:a,type:"GET",dataType:"script",cache:!0,async:!1,global:!1,throws:!0})},n.fn.extend({wrapAll:function(a){if(n.isFunction(a))return this.each(function(b){n(this).wrapAll(a.call(this,b))});if(this[0]){var b=n(a,this[0].ownerDocument).eq(0).clone(!0);this[0].parentNode&&b.insertBefore(this[0]),b.map(function(){var a=this;while(a.firstChild&&1===a.firstChild.nodeType)a=a.firstChild;return a}).append(this)}return this},wrapInner:function(a){return n.isFunction(a)?this.each(function(b){n(this).wrapInner(a.call(this,b))}):this.each(function(){var b=n(this),c=b.contents();c.length?c.wrapAll(a):b.append(a)})},wrap:function(a){var b=n.isFunction(a);return this.each(function(c){n(this).wrapAll(b?a.call(this,c):a)})},unwrap:function(){return this.parent().each(function(){n.nodeName(this,"body")||n(this).replaceWith(this.childNodes)}).end()}});function Xb(a){return a.style&&a.style.display||n.css(a,"display")}function Yb(a){if(!n.contains(a.ownerDocument||d,a))return!0;while(a&&1===a.nodeType){if("none"===Xb(a)||"hidden"===a.type)return!0;a=a.parentNode}return!1}n.expr.filters.hidden=function(a){return l.reliableHiddenOffsets()?a.offsetWidth<=0&&a.offsetHeight<=0&&!a.getClientRects().length:Yb(a)},n.expr.filters.visible=function(a){return!n.expr.filters.hidden(a)};var Zb=/%20/g,$b=/\[\]$/,_b=/\r?\n/g,ac=/^(?:submit|button|image|reset|file)$/i,bc=/^(?:input|select|textarea|keygen)/i;function cc(a,b,c,d){var e;if(n.isArray(b))n.each(b,function(b,e){c||$b.test(a)?d(a,e):cc(a+"["+("object"==typeof e&&null!=e?b:"")+"]",e,c,d)});else if(c||"object"!==n.type(b))d(a,b);else for(e in b)cc(a+"["+e+"]",b[e],c,d)}n.param=function(a,b){var c,d=[],e=function(a,b){b=n.isFunction(b)?b():null==b?"":b,d[d.length]=encodeURIComponent(a)+"="+encodeURIComponent(b)};if(void 0===b&&(b=n.ajaxSettings&&n.ajaxSettings.traditional),n.isArray(a)||a.jquery&&!n.isPlainObject(a))n.each(a,function(){e(this.name,this.value)});else for(c in a)cc(c,a[c],b,e);return d.join("&").replace(Zb,"+")},n.fn.extend({serialize:function(){return n.param(this.serializeArray())},serializeArray:function(){return this.map(function(){var a=n.prop(this,"elements");return a?n.makeArray(a):this}).filter(function(){var a=this.type;return this.name&&!n(this).is(":disabled")&&bc.test(this.nodeName)&&!ac.test(a)&&(this.checked||!Y.test(a))}).map(function(a,b){var c=n(this).val();return null==c?null:n.isArray(c)?n.map(c,function(a){return{name:b.name,value:a.replace(_b,"\r\n")}}):{name:b.name,value:c.replace(_b,"\r\n")}}).get()}}),n.ajaxSettings.xhr=void 0!==a.ActiveXObject?function(){return this.isLocal?hc():d.documentMode>8?gc():/^(get|post|head|put|delete|options)$/i.test(this.type)&&gc()||hc()}:gc;var dc=0,ec={},fc=n.ajaxSettings.xhr();a.attachEvent&&a.attachEvent("onunload",function(){for(var a in ec)ec[a](void 0,!0)}),l.cors=!!fc&&"withCredentials"in fc,(fc=l.ajax=!!fc)&&n.ajaxTransport(function(b){if(!b.crossDomain||l.cors){var c;return{send:function(d,e){var f,g=b.xhr(),h=++dc;if(g.open(b.type,b.url,b.async,b.username,b.password),b.xhrFields)for(f in b.xhrFields)g[f]=b.xhrFields[f];b.mimeType&&g.overrideMimeType&&g.overrideMimeType(b.mimeType),b.crossDomain||d["X-Requested-With"]||(d["X-Requested-With"]="XMLHttpRequest");for(f in d)void 0!==d[f]&&g.setRequestHeader(f,d[f]+"");g.send(b.hasContent&&b.data||null),c=function(a,d){var f,i,j;if(c&&(d||4===g.readyState))if(delete ec[h],c=void 0,g.onreadystatechange=n.noop,d)4!==g.readyState&&g.abort();else{j={},f=g.status,"string"==typeof g.responseText&&(j.text=g.responseText);try{i=g.statusText}catch(k){i=""}f||!b.isLocal||b.crossDomain?1223===f&&(f=204):f=j.text?200:404}j&&e(f,i,j,g.getAllResponseHeaders())},b.async?4===g.readyState?a.setTimeout(c):g.onreadystatechange=ec[h]=c:c()},abort:function(){c&&c(void 0,!0)}}}});function gc(){try{return new a.XMLHttpRequest}catch(b){}}function hc(){try{return new a.ActiveXObject("Microsoft.XMLHTTP")}catch(b){}}n.ajaxSetup({accepts:{script:"text/javascript, application/javascript, application/ecmascript, application/x-ecmascript"},contents:{script:/\b(?:java|ecma)script\b/},converters:{"text script":function(a){return n.globalEval(a),a}}}),n.ajaxPrefilter("script",function(a){void 0===a.cache&&(a.cache=!1),a.crossDomain&&(a.type="GET",a.global=!1)}),n.ajaxTransport("script",function(a){if(a.crossDomain){var b,c=d.head||n("head")[0]||d.documentElement;return{send:function(e,f){b=d.createElement("script"),b.async=!0,a.scriptCharset&&(b.charset=a.scriptCharset),b.src=a.url,b.onload=b.onreadystatechange=function(a,c){(c||!b.readyState||/loaded|complete/.test(b.readyState))&&(b.onload=b.onreadystatechange=null,b.parentNode&&b.parentNode.removeChild(b),b=null,c||f(200,"success"))},c.insertBefore(b,c.firstChild)},abort:function(){b&&b.onload(void 0,!0)}}}});var ic=[],jc=/(=)\?(?=&|$)|\?\?/;n.ajaxSetup({jsonp:"callback",jsonpCallback:function(){var a=ic.pop()||n.expando+"_"+Db++;return this[a]=!0,a}}),n.ajaxPrefilter("json jsonp",function(b,c,d){var e,f,g,h=!1!==b.jsonp&&(jc.test(b.url)?"url":"string"==typeof b.data&&0===(b.contentType||"").indexOf("application/x-www-form-urlencoded")&&jc.test(b.data)&&"data");if(h||"jsonp"===b.dataTypes[0])return e=b.jsonpCallback=n.isFunction(b.jsonpCallback)?b.jsonpCallback():b.jsonpCallback,h?b[h]=b[h].replace(jc,"$1"+e):!1!==b.jsonp&&(b.url+=(Eb.test(b.url)?"&":"?")+b.jsonp+"="+e),b.converters["script json"]=function(){return g||n.error(e+" was not called"),g[0]},b.dataTypes[0]="json",f=a[e],a[e]=function(){g=arguments},d.always(function(){void 0===f?n(a).removeProp(e):a[e]=f,b[e]&&(b.jsonpCallback=c.jsonpCallback,ic.push(e)),g&&n.isFunction(f)&&f(g[0]),g=f=void 0}),"script"}),n.parseHTML=function(a,b,c){if(!a||"string"!=typeof a)return null;"boolean"==typeof b&&(c=b,b=!1),b=b||d;var e=x.exec(a),f=!c&&[];return e?[b.createElement(e[1])]:(e=ia([a],b,f),f&&f.length&&n(f).remove(),n.merge([],e.childNodes))};var kc=n.fn.load;n.fn.load=function(a,b,c){if("string"!=typeof a&&kc)return kc.apply(this,arguments);var d,e,f,g=this,h=a.indexOf(" ");return h>-1&&(d=n.trim(a.slice(h,a.length)),a=a.slice(0,h)),n.isFunction(b)?(c=b,b=void 0):b&&"object"==typeof b&&(e="POST"),g.length>0&&n.ajax({url:a,type:e||"GET",dataType:"html",data:b}).done(function(a){f=arguments,g.html(d?n("<div>").append(n.parseHTML(a)).find(d):a)}).always(c&&function(a,b){g.each(function(){c.apply(this,f||[a.responseText,b,a])})}),this},n.each(["ajaxStart","ajaxStop","ajaxComplete","ajaxError","ajaxSuccess","ajaxSend"],function(a,b){n.fn[b]=function(a){return this.on(b,a)}}),n.expr.filters.animated=function(a){return n.grep(n.timers,function(b){return a===b.elem}).length};function lc(a){return n.isWindow(a)?a:9===a.nodeType&&(a.defaultView||a.parentWindow)}n.offset={setOffset:function(a,b,c){var d,e,f,g,h,i,j,k=n.css(a,"position"),l=n(a),m={};"static"===k&&(a.style.position="relative"),h=l.offset(),f=n.css(a,"top"),i=n.css(a,"left"),j=("absolute"===k||"fixed"===k)&&n.inArray("auto",[f,i])>-1,j?(d=l.position(),g=d.top,e=d.left):(g=parseFloat(f)||0,e=parseFloat(i)||0),n.isFunction(b)&&(b=b.call(a,c,n.extend({},h))),null!=b.top&&(m.top=b.top-h.top+g),null!=b.left&&(m.left=b.left-h.left+e),"using"in b?b.using.call(a,m):l.css(m)}},n.fn.extend({offset:function(a){if(arguments.length)return void 0===a?this:this.each(function(b){n.offset.setOffset(this,a,b)});var b,c,d={top:0,left:0},e=this[0],f=e&&e.ownerDocument;if(f)return b=f.documentElement,n.contains(b,e)?(void 0!==e.getBoundingClientRect&&(d=e.getBoundingClientRect()),c=lc(f),{top:d.top+(c.pageYOffset||b.scrollTop)-(b.clientTop||0),left:d.left+(c.pageXOffset||b.scrollLeft)-(b.clientLeft||0)}):d},position:function(){if(this[0]){var a,b,c={top:0,left:0},d=this[0];return"fixed"===n.css(d,"position")?b=d.getBoundingClientRect():(a=this.offsetParent(),b=this.offset(),n.nodeName(a[0],"html")||(c=a.offset()),c.top+=n.css(a[0],"borderTopWidth",!0),c.left+=n.css(a[0],"borderLeftWidth",!0)),{top:b.top-c.top-n.css(d,"marginTop",!0),left:b.left-c.left-n.css(d,"marginLeft",!0)}}},offsetParent:function(){return this.map(function(){var a=this.offsetParent;while(a&&!n.nodeName(a,"html")&&"static"===n.css(a,"position"))a=a.offsetParent;return a||Pa})}}),n.each({scrollLeft:"pageXOffset",scrollTop:"pageYOffset"},function(a,b){var c=/Y/.test(b);n.fn[a]=function(d){return X(this,function(a,d,e){var f=lc(a);if(void 0===e)return f?b in f?f[b]:f.document.documentElement[d]:a[d];f?f.scrollTo(c?n(f).scrollLeft():e,c?e:n(f).scrollTop()):a[d]=e},a,d,arguments.length,null)}}),n.each(["top","left"],function(a,b){n.cssHooks[b]=Ta(l.pixelPosition,function(a,c){if(c)return c=Ra(a,b),Na.test(c)?n(a).position()[b]+"px":c})}),n.each({Height:"height",Width:"width"},function(a,b){n.each({padding:"inner"+a,content:b,"":"outer"+a},function(c,d){n.fn[d]=function(d,e){var f=arguments.length&&(c||"boolean"!=typeof d),g=c||(!0===d||!0===e?"margin":"border")
             ;return X(this,function(b,c,d){var e;return n.isWindow(b)?b.document.documentElement["client"+a]:9===b.nodeType?(e=b.documentElement,Math.max(b.body["scroll"+a],e["scroll"+a],b.body["offset"+a],e["offset"+a],e["client"+a])):void 0===d?n.css(b,c,g):n.style(b,c,d,g)},b,f?d:void 0,f,null)}})}),n.fn.extend({bind:function(a,b,c){return this.on(a,null,b,c)},unbind:function(a,b){return this.off(a,null,b)},delegate:function(a,b,c,d){return this.on(b,a,c,d)},undelegate:function(a,b,c){return 1===arguments.length?this.off(a,"**"):this.off(b,a||"**",c)}}),n.fn.size=function(){return this.length},n.fn.andSelf=n.fn.addBack,"function"==typeof define&&define.amd&&define("jquery",[],function(){return n});var mc=a.jQuery,nc=a.$;return n.noConflict=function(b){return a.$===n&&(a.$=nc),b&&a.jQuery===n&&(a.jQuery=mc),n},b||(a.jQuery=a.$=n),n});
             jQuery.noConflict();
-        </script><script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
-        <title>Contact SBOBET</title>
+        </script>
+        <script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
+        <title>SBOBET Parlay : Taruhan Mix Parlay - Menang Banyak</title>
         <meta name="robots" content="max-image-preview:large">
 
-        <!-- All In One SEO Pack 3.7.0[97745,97788] -->
+        <!-- All In One SEO Pack 3.7.0[97745,97793] -->
         <meta name="description" content="368MEGA adalah situs judi online terpercaya, yang memproduksi game RTP slot online gacor terbaik 2022. Daftar dan mainkan judi slot online sekarang!">
 
-        <script type="application/ld+json" class="aioseop-schema">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"http://112.140.186.56/#organization","url":"http://112.140.186.56/","name":"SBOBET Oriental","sameAs":[]},{"@type":"WebSite","@id":"http://112.140.186.56/#website","url":"http://112.140.186.56/","name":"SBOBET Oriental","publisher":{"@id":"http://112.140.186.56/#organization"},"potentialAction":{"@type":"SearchAction","target":"http://112.140.186.56/?s={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"WebPage","@id":"http://112.140.186.56/contact/#webpage","url":"http://112.140.186.56/contact/","inLanguage":"en-US","name":"Contact SBOBET","isPartOf":{"@id":"http://112.140.186.56/#website"},"breadcrumb":{"@id":"http://112.140.186.56/contact/#breadcrumblist"},"description":"Hubungi customer service SBOBET untuk mendapatkan bantuan seputar permainan, registrasi, deposit dan withdraw. Kami online 24 jam dan selalu siap melayani.","datePublished":"2019-06-14T06:11:53+00:00","dateModified":"2021-07-14T08:20:00+00:00"},{"@type":"BreadcrumbList","@id":"http://112.140.186.56/contact/#breadcrumblist","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"WebPage","@id":"http://112.140.186.56/","url":"http://112.140.186.56/","name":"SBOBEToriental : Daftar SBOBET Indonesia Asia Online"}},{"@type":"ListItem","position":2,"item":{"@type":"WebPage","@id":"http://112.140.186.56/contact/","url":"http://112.140.186.56/contact/","name":"Contact SBOBET"}}]}]}</script>
+        <script type="application/ld+json" class="aioseop-schema">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"http://112.140.186.56/#organization","url":"http://112.140.186.56/","name":"SBOBET Oriental","sameAs":[]},{"@type":"WebSite","@id":"http://112.140.186.56/#website","url":"http://112.140.186.56/","name":"SBOBET Oriental","publisher":{"@id":"http://112.140.186.56/#organization"},"potentialAction":{"@type":"SearchAction","target":"http://112.140.186.56/?s={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"WebPage","@id":"http://112.140.186.56/mix-parlay/#webpage","url":"http://112.140.186.56/mix-parlay/","inLanguage":"en-US","name":"SBOBET Mix Parlay","isPartOf":{"@id":"http://112.140.186.56/#website"},"breadcrumb":{"@id":"http://112.140.186.56/mix-parlay/#breadcrumblist"},"description":"Ayo pasang taruhan Mix Parlay di SBOBET Parlay dan menang banyak. Pendaftaran mudah, deposit cepat, menang pasti di bayar. Ada bonus gede juga lho untuk member baru.","image":{"@type":"ImageObject","@id":"http://112.140.186.56/mix-parlay/#primaryimage","url":"http://112.140.186.56/wp-content/uploads/2021/07/sbobet-mix-parlay.jpg","width":780,"height":453},"primaryImageOfPage":{"@id":"http://112.140.186.56/mix-parlay/#primaryimage"},"datePublished":"2021-06-16T12:38:11+00:00","dateModified":"2021-07-14T08:51:34+00:00"},{"@type":"BreadcrumbList","@id":"http://112.140.186.56/mix-parlay/#breadcrumblist","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"WebPage","@id":"http://112.140.186.56/","url":"http://112.140.186.56/","name":"SBOBEToriental : Daftar SBOBET Indonesia Asia Online"}},{"@type":"ListItem","position":2,"item":{"@type":"WebPage","@id":"http://112.140.186.56/mix-parlay/","url":"http://112.140.186.56/mix-parlay/","name":"SBOBET Mix Parlay"}}]}]}</script>
         <link rel="canonical" href="">
         <!-- All In One SEO Pack -->
         <link rel="stylesheet" id="wp-block-library-css" href="../wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all">
@@ -27,7 +28,7 @@
         <script type="text/javascript" src="../wp-includes/js/jquery/jquery-migrate.min.js" id="jquery-migrate-js"></script>
         <script type="text/javascript" src="../wp-content/plugins/yet-another-stars-rating-pro/js/jquery.rateit.min.js" id="rateit-js"></script>
         <script type="text/javascript" src="../wp-content/plugins/yet-another-stars-rating-pro/js/yasr-front.js" id="yasrfront-js"></script>
-        
+
         <link type="text/css" media="all" rel="stylesheet" href="../wp-content/themes/master/assets/css/swiper.css">
         <link type="text/css" media="all" rel="stylesheet" href="../wp-content/themes/master/assets/css/style.css">
         
@@ -61,200 +62,312 @@
         </script>
     </head>
 
-        <body class="page-template page-template-custom-page page-template-full-width page-template-custom-pagefull-width-php page page-id-9">
-            
-            <div id="header" class="block">
-                <div class="container">
-                    <div class="skew-left"></div>
-                        <div class="skew-center">
-                            <div class="official blink" style="opacity: 0.612857;">
-                                <span style="color: #7ad2ff;">368MEGA</span> Situs Judi RTP Slot Online Gacor Terbaik 2022
-                            </div>
-                            <a href="../#daftar-sbobet" class="button_1 register desktop">
-                                <i class="icon-asset icon-member-register"></i>
-                                DAFTAR SBOBET
-                            </a>
-                            &nbsp;
-                            <a href="../login" class="button_2 login desktop">
-                                <i class="icon-asset icon-member-login"></i>
-                                LOGIN SBOBET
-                            </a>
-                        </div>
-                    <div class="skew-right"></div>                   
-                </div>
-            </div>
+    <body class="page-template-default page page-id-1205">
 
-            <div id="top" class="block">
-                <div class="wrap">
-                    <div class="col-1">
-                        <a href="../" title="368MEGA">
-                            <img src="https://images.linkcdn.cloud/V1/53/logo/53-logo-1881613258.webp" alt="368MEGA">
-                        </a>
+        <div id="header" class="block">
+            <div class="container">
+                <div class="skew-left"></div>
+                <div class="skew-center">
+                    <div class="official blink" style="opacity: 0.585714;">
+                        <span style="color: #7ad2ff;">368MEGA</span> Situs Judi RTP Slot Online Gacor Terbaik 2022
                     </div>
-                    <div class="col-2">
-                        <div class="mobile">
-                            <span class="mobile-menu">
-                                <img src="http://112.140.186.56/wp-content/themes/master/assets/images/menu.png" alt="">
-                            </span>
-                        </div>
-                        <div id="menu" class="block inner">
-                            <div class="mobile">
-                                <img src="http://112.140.186.56/wp-content/themes/master/assets/images/close.png" alt="" class="close-menu">
-                            </div>
-                            <nav class="main-menu" role="navigation">
-                                <div class="menu-main-menu-container">
-                                    <ul id="menu-main-menu" class="nav-menu">
-                                        <li id="menu-item-30" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home">
-                                            <a href="../">Home</a>
-                                        </li>
-                                        <li id="menu-item-1131" class="register-button menu-item menu-item-type-custom menu-item-object-custom menu-item-home">
-                                            <a href="../#daftar-sbobet">Daftar SBOBET</a>
-                                        </li>
-                                        <li id="menu-item-1314" class="menu-item menu-item-type-post_type menu-item-object-page">
-                                            <a href="../bonus/">Bonus SBOBET</a>
-                                        </li>
-                                        <li id="menu-item-1135" class="menu-item menu-item-type-post_type menu-item-object-page">
-                                            <a href="../deposit-withdraw/">Deposit / Withdraw</a>
-                                        </li>
-                                        <li id="menu-item-35" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-9 current_page_item">
-                                            <a href="">Hubungi</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </nav>
-                        </div>
-                    </div>
+                    <a href="../#daftar-sbobet" class="button_1 register desktop">
+                        <i class="icon-asset icon-member-register"></i>
+                        DAFTAR SBOBET
+                    </a>
+                    &nbsp;
+                    <a href="../login" class="button_2 login desktop">
+                        <i class="icon-asset icon-member-login"></i>
+                        LOGIN SBOBET
+                    </a>
                 </div>
+                <div class="skew-right"></div>                   
             </div>
+        </div>
 
-            <div id="news" class="block">
-                <div class="container">
-                    <ul class="breadcrumbs" vocab="http://schema.org/" typeof="BreadcrumbList">
-                        <li property="itemListElement" typeof="ListItem">
-                            <a property="item" typeof="WebPage" class="return" href="/">
-                                <span property="name">Home</span>
-                            </a>
-                            <meta property="position" content="1">
-                        </li>
-                        <li property="itemListElement" typeof="ListItem">
-                            <a property="item" typeof="WebPage">
-                                <span property="name">
-                                    Contact SBOBET
-                                </span>
-                            </a>
-                            <meta property="position" content="2">
-                        </li>
-                    </ul> 
-                    
-                    <div class="social">
-                        <span>Follow us on :</span>
-                        <span itemscope="" itemtype="https://schema.org/Organization">
-                            <link itemprop="url" href="http://112.140.186.56">
-                            <a href="https://www.facebook.com/sbobet/" target="_blank" itemprop="sameAs">
-                                <img src="../wp-content/themes/master/assets/images/sosmed-facebook.png" alt="Facebook">
-                            </a>
-                            <a href="https://twitter.com/SBOBET" target="_blank" itemprop="sameAs">
-                                <img src="../wp-content/themes/master/assets/images/sosmed-twitter.png" alt="Twitter">
-                            </a>
-                            <a href="https://www.instagram.com/sbobet/" target="_blank" itemprop="sameAs">
-                                <img src="../wp-content/themes/master/assets/images/sosmed-instagram.png" alt="Instagram">
-                            </a>
-                            <a href="https://www.youtube.com/channel/UCiidtkeWjHHERAuSagg4Ftw" target="_blank" itemprop="sameAs">
-                                <img src="../wp-content/themes/master/assets/images/sosmed-youtube.png" alt="Youtube">
-                            </a>
+        <div id="top" class="block">
+            <div class="wrap">
+        
+                <div class="col-1">
+                    <a href="../" title="368MEGA">
+                        <img src="https://images.linkcdn.cloud/V1/53/logo/53-logo-1881613258.webp" alt="368MEGA">
+                    </a>
+                </div>
+                
+                <div class="col-2">
+                    <div class="mobile">
+                        <span class="mobile-menu">
+                            <img src="../wp-content/themes/master/assets/images/menu.png" alt="">
                         </span>
                     </div>
+                    <div id="menu" class="block inner">
+                        <div class="mobile">
+                            <img src="../wp-content/themes/master/assets/images/close.png" alt="" class="close-menu">
+                        </div>
+                        <nav class="main-menu" role="navigation">
+                            <div class="menu-main-menu-container">
+                                <ul id="menu-main-menu" class="nav-menu">
+                                    <li id="menu-item-30" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home">
+                                        <a href="../">Home</a>
+                                    </li>
+                                    <li id="menu-item-1131" class="register-button menu-item menu-item-type-custom menu-item-object-custom menu-item-home">
+                                        <a href="../#daftar-sbobet">Daftar SBOBET</a>
+                                    </li>
+                                    <li id="menu-item-1314" class="menu-item menu-item-type-post_type menu-item-object-page">
+                                        <a href="../bonus/">Bonus SBOBET</a>
+                                    </li>
+                                    <li id="menu-item-1135" class="menu-item menu-item-type-post_type menu-item-object-page">
+                                        <a href="../deposit-withdraw/">Deposit / Withdraw</a>
+                                    </li>
+                                    <li id="menu-item-35" class="menu-item menu-item-type-post_type menu-item-object-page">
+                                        <a href="../contact/">Hubungi</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <div id="content" class="site-content block">
-  	            <div class="wrap">
-                    <div id="primary" class="content-area" style="width: 100%;">
-		                <main id="main" class="site-main" role="main">
-                            <article id="post-9" class="post-9 page type-page status-publish hentry">
-                                <a href="" rel="lightbox" target="_blank"></a>  
-                                <header class="entry-header">
-                                    <div class="title">
-                                        <h1 itemprop="name" class="entry-title">
-                                            Contact SBOBET        
-                                        </h1>
-                                        <div class="post-meta">
-                                        
-                                        <div class="edited"><span class="published-text">Published by :</span> <span class="post-author vcard author"><span class="fn"><a rel="author" title="Posts by 368MEGA" href="http://112.140.186.56/SBOBET/">
-                                            <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-                                            <span itemprop="name">368MEGA</span></span></a></span></span> on
+        <div id="news" class="block">
+            <div class="container">
+                
+                <ul class="breadcrumbs" vocab="http://schema.org/" typeof="BreadcrumbList">
+                    <li property="itemListElement" typeof="ListItem">
+                        <a property="item" typeof="WebPage" class="return" href="/">
+                            <span property="name">Home</span>
+                        </a>
+                        <meta property="position" content="1">
+                    </li><li property="itemListElement" typeof="ListItem">
+                        <a property="item" typeof="WebPage">
+                        <span property="name">
+                            SBOBET Mix Parlay
+                            </span>
+                        </a>
+                        <meta property="position" content="2">
+                    </li>
+                </ul> 
+                
+                <div class="social">
+                    <span>Follow us on :</span>
+                    <span itemscope="" itemtype="https://schema.org/Organization">
+                        <link itemprop="url" href="http://112.140.186.56">
+                        <a href="https://www.facebook.com/sbobet/" target="_blank" itemprop="sameAs">
+                            <img src="../wp-content/themes/master/assets/images/sosmed-facebook.png" alt="Facebook">
+                        </a>
+                        <a href="https://twitter.com/SBOBET" target="_blank" itemprop="sameAs">
+                            <img src="../wp-content/themes/master/assets/images/sosmed-twitter.png" alt="Twitter">
+                        </a>
+                        <a href="https://www.instagram.com/sbobet/" target="_blank" itemprop="sameAs">
+                            <img src="../wp-content/themes/master/assets/images/sosmed-instagram.png" alt="Instagram">
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCiidtkeWjHHERAuSagg4Ftw" target="_blank" itemprop="sameAs">
+                            <img src="../wp-content/themes/master/assets/images/sosmed-youtube.png" alt="Youtube">
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div id="content" class="site-content block">
+            <div class="wrap">
+                <div id="primary" class="content-area">
+                    <main id="main" class="site-main" role="main">
+                        <article id="post-1205" class="post-1205 page type-page status-publish has-post-thumbnail hentry">
+                            <a href="../wp-content/uploads/2021/07/sbobet-mix-parlay.jpg" rel="lightbox" target="_blank">
+                                <div class="post-thumbnail">
+                                    <img width="780" height="453" src="../wp-content/uploads/2021/07/sbobet-mix-parlay.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="SBOBET Mix Parlay" loading="lazy" srcset="../wp-content/uploads/2021/07/sbobet-mix-parlay.jpg 780w, ../wp-content/uploads/2021/07/sbobet-mix-parlay-300x174.jpg 300w, ../wp-content/uploads/2021/07/sbobet-mix-parlay-768x446.jpg 768w" sizes="(max-width: 780px) 100vw, 780px">
+                                </div><!-- .post-thumbnail -->
+                            </a>  
+                            <header class="entry-header">
+                                <div class="title">
+                                    <h1 itemprop="name" class="entry-title">
+                                        SBOBET Parlay : Taruhan Mix Parlay - Menang Banyak
+                                    </h1>
+                                    <div class="post-meta">
+                                        <div class="edited">
+                                            <span class="published-text">Published by :</span> 
+                                            <span class="post-author vcard author">
+                                                <span class="fn">
+                                                    <a rel="author" title="Posts by 368MEGA" href="http://112.140.186.56/SBOBET/">
+                                                        <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+                                                            <span itemprop="name">
+                                                                368MEGA
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                </span>
+                                            </span> on
                                             <span class="post-date date updated">
-                                                <time itemprop="datePublished" datetime="June-14-2019">
+                                                <time itemprop="datePublished" datetime="June-16-2021">
                                                     <i class="fa fa-calendar"></i>
                                                     July 14, 2021
                                                 </time>
                                             </span> 
                                         </div>
-                                        </div>
                                     </div>
-                                </header><!-- .entry-header -->
+                                </div>
+                            
+                            </header><!-- .entry-header -->
 
-	                            <div class="entry-content">
-                                    <p style="text-align: center;">
-                                        Customer service <a href="">SBOBET Indonesia</a> online 24 jam setiap hari, hubungi kami untuk pendaftar, deposit dan withdraw.
-                                    </p>
-                                    <blockquote>
-                                    <p style="text-align: center;">Fast respond silahkan chat via Whatsapp, terima kasih.</p>
-                                    </blockquote>
-                                    <table>
-                                        <tbody>
-                                            <tr>
-                                                <td>SMS</td>
-                                                <td>+<span class="Linkify">639771982379</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>WHATSAPP</td>
-                                                <td>+<span class="Linkify">639771982379</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>LINE</td>
-                                                <td>368MEGA</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <div id="yasr_visitor_votes_9" class="yasr-visitor-votes">
-                                        <div class="rateit bigstars" id="yasr_rateit_visitor_votes_9" data-rateit-starwidth="32" data-rateit-starheight="32" data-rateit-value="3.9" data-rateit-step="1" data-rateit-resetable="false" data-rateit-readonly="false">
-                                            <button id="rateit-reset-2" type="button" data-role="none" class="rateit-reset" aria-label="reset rating" aria-controls="rateit-range-2" style="display: none;"></button>
-                                        </div>
-                                        <span class="dashicons dashicons-chart-bar yasr-dashicons-visitor-stats " id="yasr-total-average-dashicon-9"></span>
-                                        <span class="yasr-total-average-container" id="yasr-total-average-text_9">
-                                            [Total: 27 &nbsp; &nbsp;Average: 3.9/5]
-                                        </span>
+                            <div class="entry-content">
+                    
+                                <div class="login-SBOBET">
+                                    <div class="login-pc">
+                                        <a href="https://longiland.com" target="_blank" rel="nofollow noopener noreferrer">
+                                        <img src="../wp-content/themes/master/assets/images/sbobet-logo.png" alt="login sbobet">
+                                            Login<br>Desktop
+                                        </a>
                                     </div>
-                                    <script type="text/javascript">
-                                        jQuery(document).ready(function() {
-                                            var stringTooltipValues = "bad, poor, ok, good, super";
-                                            var arrayTooltipValues = stringTooltipValues.split(', ');
-                                            var postid = 9;
-                                            var ajaxurl = "http:\/\/112.140.186.56\/wp-admin\/admin-ajax.php";
-                                            var size = "large";
-                                            var loggedUser = false;
-                                            var voteIfUserAlredyRated = false;
-                                            var loaderHtml = "<div id=\"loader-visitor-rating\" >&nbsp; Loading, please wait <img src=http:\/\/112.140.186.56\/wp-content\/plugins\/yet-another-stars-rating-pro\/img\/\/loader.gif title=\"yasr-loader\" alt=\"yasr-loader\"><\/div>";
-                                            var nonceVisitor = "033e8e7487";
-                                                
-                                            yasrVisitorsVotes(arrayTooltipValues, postid, ajaxurl, size, loggedUser, voteIfUserAlredyRated, loaderHtml, nonceVisitor);
+                                    <div class="login-mobile">
+                                        <a href="http://m.longiland.com/web-root/public/login.aspx" target="_blank" rel="nofollow noopener noreferrer">
+                                        <img src="../wp-content/themes/master/assets/images/sbobet-logo.png" alt="login sbobet">
+                                            Login<br>Mobile
+                                        </a>
+                                    </div>
+                                    <div class="login-wap">
+                                        <a href="http://wap.longiland.com/" target="_blank" rel="nofollow noopener noreferrer">
+                                        <img src="../wp-content/themes/master/assets/images/sbobet-logo.png" alt="login sbobet">
+                                            Login<br>WAP
+                                        </a>
+                                    </div>
+                                </div>
+                
+                                <p>Ayo pasang taruhan Mix Parlay di SBOBET Parlay dan menang banyak. Pendaftaran mudah, deposit cepat, menang pasti di bayar. Ada bonus gede juga lho untuk member baru.</p>
+                                <p>Mix parlay atau <a href="">SBOBET parlay</a> campuran merupakan jenis taruhan berganda pada judi bola online. Jenis taruhan ini dinilai jenis taruhan yang paling menarik. Bagaimnana tidak jika bermain jenis taruhan ini memberikan keuntungan yang lebih besar dibandingkan dengan jenis taruhan lainnya pada judi bola online.</p>
+                                <p>Sebenarnya ini merupakan jenis taruhan yang memungkinkan pemainnya untuk memilih beberapa pasaran <a href="../#daftar-sbobet">Daftar Sbobet</a> secara sekaligus. Artinya anda bisa menebak beberapa pasaran pada satu kali pasang taruhan. Maka keuntungan atau nilai odds yang akan pemain raih menjadi lebih besar dibandingkan dengan jenis taruhan lain.</p>
+                                <p>Minimal pasaran yang harus ditebak pada saat bermain parlay adalah 3 pasaran. Sementara maksimal pasaran yang harus ditebak adalah 10 pasaran. Ini aturan umun, namun ada pula bandar judi online yang menerapkan aturan yang berbeda. Sehingga pada saat ingin bermain parlay, pastikan aturan yang berlaku terlebih dahulu.</p>
+                                <p><strong>Syarat Dan Ketentuan Bermain Mix Parlay :</strong></p>
+                                <ol>
+                                    <li>Semua Taruhan mix parlay dengan minimal taruhan sebesar 10K atau 10 Ribu Rupiah dan minimal 11 Partai Mix Parlay otomatis akan diikutkan pada Promo Event ini.</li>
+                                    <li>Kemenangan Mix Parlay Di <a href="http://112.140.186.56/agen/">Agen SBOBET Online</a> minimal harus mencapai kelipatan pembayaran sesuai dengan jumlah yang tercantum pada tabel.</li>
+                                    <li>Hadiah jackpot yang diraih sesuai dengan jumlah partai yang telah dipilih. Contohnnya memasang mix parlay 11 partai sebesar 10K, setelah tebakan anda benar semua (11) maka Anda akan meraih hadiah Samsung Watch Active.</li>
+                                    <li>Jumlah partai wajib sesuai dengan yang telah dianjurkan, atau jika lebih besar jumlah partainya maka akan dihitung berdasarkan dari hadiah promo tertinggi dibawah jumlah partai mix parlay yang dimenangkan. Contohnya menang pasang mix parlay 15 partai dengan taruhan sebesar 10K, maka anda akan meraih hadiah kemenangan jumlah mix parlay 13 yaitu motor Yamaha Mio S Smart.</li>
+                                    <li>Setiap akun ID hanya bisa klaim hadiah promo 1 kali saja selama event periode ini, kemenangannya selanjutnya pada periode promo ini tidak lagi meraih hadiah tambahan.</li>
+                                    <li>Maksimal klaim bonus 3×24 jam sejak kemenangan, atau akan dianggap hangus hadiahnya.</li>
+                                    <li>Jika terindikasi kecurangan, maka SBOBET Oriental bisa melakukan pembatalan penyerahan hadiah tersebut secara sepihak.</li>
+                                    <li>Promo ini berlaku hanya untuk 1 ID, 1 no HP, nama yang sama dengan rekening Bank dan 1 jenis bank.</li>
+                                    <li>Penyerahan hadiah maksimal 1 bulan dari sejak waktu klaim hadiah.</li>
+                                    <li>Penyerahan hadiah bisa berupa uang sesuai dengan harga pasaran hadiah jika stok hadiah tersebut habis.</li>
+                                </ol>
+                                <p>&nbsp;</p>
+                                <p><strong>Langkah Bermain Taruhan Mix Parlay Sbobet </strong></p>
+                                <ol>
+                                    <li>Masuk ke dalam akun SBOBET Anda dan klik olahraga yang berada pada bagian sebelah kiri halaman, kemudian memilih sepakbola, lalu klik pasar klik Mix Parlay seperti gambar dibawah ini. Setelah klik mix parlay maka akan muncul tabel pasaran sepakbola yang dapat dimainkan secara Mix Parlay, dari tabel pasaran diatas kita bisa tahu bahwa terdapat 30 partai sepakbola yang bisa di mainkan secara Mix Parlay.</li>
+                                    <li>Untuk bermain Mix Parlay ini kami akan memberikan contoh tabel cara pasang Mix Parlay. Dari contoh itu, kita bisa tahu mana tim yang kita pasang dan jumlah kemenangan jika berhasil menebak dengan benar hasil pertandingan sepakbola. Pembayaran maksimum pada setiap taruhan Mix Parlay ditunjukkan pada bagian atas halaman Harga Taruhan Mix Parlay.</li>
+                                    <li>Dari 30 partai pertandingan yang dapat dijadikan taruhan Mix Parlay, Anda bisa memilih untuk taruhan dan klik pada harga dari tim yang diinginkan untuk membuat taruhan. Dengan klik pasar harga maka akan membuka tiket taruhan Mix Parlay yang terletak pada sebelah kiri halaman, contoh taruhan yang dipilih :</li>
+                                </ol>
+                                <p>Gambar disamping merupakan contoh pasang Mix Parlay yang menjelaskan Anda pasang 5 pertandingan tim yang berbeda dari 30 partai pertandingan yang ada pada pasaran.</p>
+                                <ol>
+                                    <li>Team Cardiff City dengan Handicap 0.25 pada harga 2.02.</li>
+                                    <li>Team Eibar dengan Handicap 0.0 pada harga 1.84.</li>
+                                    <li>Team FSV Mainz 05 dengan Handicap 0.0 pada harga 2.02.</li>
+                                    <li>Team Nantes dengan Handicap 0.5 pada harga 1.86.</li>
+                                    <li>Team Cadiz dengan Handicap 0.0 pada harga 1.97.</li>
+                                    <li>Anda memasang 50 (Rp.50.000) pada 1 (Satu) pasangan. Mix Parlay dengan kemenangan maximum @27.51 sebesar 50.000 x 27.51 = 1375.000,-</li>
+                                </ol>
+                                <p>Sebelum Klik Ajukan, periksa kembali seluruh partai yang Anda mainkan dan Anda bisa menambahkan pertandingan lainnya dengan atau mengganti dengan pertandingan yang lain, jika tidak ada perubahan maka anda bisa langsung klik pada “Ajukan” untuk taruhan Mix Parlay. Setelah klik tombol “Ajukan” maka taruhan Anda akan segera diterima oleh sistem SBOBET, jika taruhan anda diterima maka taruhan anda sudah sah dan tengah berjalan seperti gambar disamping.</p>
+                                <p>[Mix Parlay @27.51E] itu berarti kemenangan atau pembayaran maksimum kemenangan taruhan Anda pada Mix Parlay. Jika Anda menebak seluruh pertandingan dengan benar, maka kemenangan anda [27.51 x 50 = 1375]. Jika tebakan Anda tidak tepat semuanya maka kemenangan taruhan akan dihitung dari harga pasaran yang telah dipasang.</p>
+                                <div id="yasr_visitor_votes_1205" class="yasr-visitor-votes">
+                                    <div class="rateit bigstars" id="yasr_rateit_visitor_votes_1205" data-rateit-starwidth="32" data-rateit-starheight="32" data-rateit-value="4.5" data-rateit-step="1" data-rateit-resetable="false" data-rateit-readonly="false">
+                                        <button id="rateit-reset-2" type="button" data-role="none" class="rateit-reset" aria-label="reset rating" aria-controls="rateit-range-2" style="display: none;"></button>
+                                    </div>
+                                    <span class="dashicons dashicons-chart-bar yasr-dashicons-visitor-stats " id="yasr-total-average-dashicon-1205"></span>
+                                    <span class="yasr-total-average-container" id="yasr-total-average-text_1205">
+                                        [Total: 10 &nbsp; &nbsp;Average: 4.5/5]
+                                    </span>
+                                </div>
+                                <script type="text/javascript">
 
-                                            var visitorStatsEnabled = "yes";
+                                    jQuery(document).ready(function() {
 
-                                            //If stats are enabled call the function 
-                                            if (visitorStatsEnabled == 'yes') {
-                                                yasrDrawTipsProgress (postid, ajaxurl); 
-                                            }
-                                        });
-                                    </script>
-    			                </div><!-- .entry-content -->
-                            </article><!-- #post-## -->
-                        </main><!-- .site-main -->
-                    </div><!-- .content-area -->
-               </div><!-- .wrap -->
-            </div><!-- .site-content -->  
+                                        var stringTooltipValues = "bad, poor, ok, good, super";
+                                        var arrayTooltipValues = stringTooltipValues.split(', ');
+                                        var postid = 1205;
+                                        var ajaxurl = "http:\/\/112.140.186.56\/wp-admin\/admin-ajax.php";
+                                        var size = "large";
+                                        var loggedUser = false;
+                                        var voteIfUserAlredyRated = false;
+                                        var loaderHtml = "<div id=\"loader-visitor-rating\" >&nbsp; Loading, please wait <img src=http:..\/wp-content\/plugins\/yet-another-stars-rating-pro\/img\/\/loader.gif title=\"yasr-loader\" alt=\"yasr-loader\"><\/div>";
+                                        var nonceVisitor = "12ab9b5db0";
+                                            
+                                        yasrVisitorsVotes(arrayTooltipValues, postid, ajaxurl, size, loggedUser, voteIfUserAlredyRated, loaderHtml, nonceVisitor);
+
+                                        var visitorStatsEnabled = "yes";
+
+                                        //If stats are enabled call the function 
+                                        if (visitorStatsEnabled == 'yes') {
+                                            yasrDrawTipsProgress (postid, ajaxurl); 
+                                        }
+
+                                    });
+
+                                </script>
+                            </div><!-- .entry-content -->
+                        </article><!-- #post-## -->
+                    </main><!-- .site-main -->
+                </div><!-- .content-area -->
+
+                <div id="secondary" class="secondary">
+                    <section>
+                        <div class="news-list">
+                            <h4>Artikel SBOBET</h4>
+                            <a href="../agen/">
+                                <h3>Agen SBOBET</h3>
+                            </a>
+                            <a href="../bonus/">
+                                <h3>Bonus SBOBET</h3>
+                            </a>
+                            <a href="../cara-main/">
+                                <h3>Cara Main SBOBET</h3>
+                            </a>
+                            <a href="../link-alternatif/">
+                                <h3>Link Alternatif SBOBET</h3>
+                            </a>
+                            <a href="../login/">
+                                <h3>Login SBOBET</h3>
+                            </a>
+                            <a href="../football-strike/">
+                                <h3>SBOBET : Football Strike</h3>
+                            </a>
+                            <a href="../casino/">
+                                <h3>SBOBET Casino</h3>
+                            </a>
+                            <a href="../esports/">
+                                <h3>SBOBET eSports</h3>
+                            </a>
+                            <a href="../handicap/">
+                                <h3>SBOBET Handicap</h3>
+                            </a>
+                            <a href="../keno/">
+                                <h3>SBOBET Keno</h3>
+                            </a>
+                            <a href="../live-court/">
+                                <h3>SBOBET Live Court</h3>
+                            </a>
+                            <a href="">
+                                <h3>SBOBET Mix Parlay</h3>
+                            </a>
+                            <a href="http://112.140.186.56/mobile/">
+                                <h3>SBOBET Mobile</h3>
+                            </a>
+                            <a href="http://112.140.186.56/racing/">
+                                <h3>SBOBET Racing</h3>
+                            </a>
+                            <a href="http://112.140.186.56/virtual-sports/">
+                                <h3>SBOBET Virtual Sports</h3>
+                            </a>
+                            <a href="http://112.140.186.56/wap/">
+                                <h3>SBOBET WAP</h3>
+                            </a>
+                        </div>   
+                    </section>
+                </div><!-- .secondary -->
+            </div><!-- .wrap -->
+        </div><!-- .site-content -->  
         <!-- .site -->
+
         <div id="footer" class="block">
             <div class="wrap">
                 <div class="footer-link">
@@ -275,8 +388,8 @@
                             <li id="menu-item-1142" class="menu-item menu-item-type-post_type menu-item-object-page">
                                 <a href="http://112.140.186.56/privacy-policy/">Privacy Policy</a>
                             </li>
-                            <li id="menu-item-1143" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-9 current_page_item">
-                                <a href="">Contact SBOBET</a>
+                            <li id="menu-item-1143" class="menu-item menu-item-type-post_type menu-item-object-page">
+                                <a href="../contact/">Contact SBOBET</a>
                             </li>
                         </ul>
                     </div>
@@ -338,13 +451,13 @@
             </a>
         </div>
 
-        <link rel="stylesheet" id="dashicons-css" href="../wp-includes/css/dashicons.min.css" type="text/css" media="all">
+        <link rel="stylesheet" id="dashicons-css" href="../wp-includes/css/dashicons.min.css?ver=5.7.6" type="text/css" media="all">
         <link rel="stylesheet" id="yasrcssrateit-css" href="../wp-content/plugins/yet-another-stars-rating-pro/css/yasr-rateit.css.php" type="text/css" media="all">
         <link rel="stylesheet" id="yasrcss-css" href="../wp-content/plugins/yet-another-stars-rating-pro/css/yasr.css" type="text/css" media="all">
         <link rel="stylesheet" id="yasrcsslightscheme-css" href="../wp-content/plugins/yet-another-stars-rating-pro/css/yasr-table-light.css" type="text/css" media="all">
-        <script type="text/javascript" src="../wp-includes/js/jquery/ui/core.min.js" id="jquery-ui-core-js"></script>
-        <script type="text/javascript" src="../wp-includes/js/jquery/ui/progressbar.min.js" id="jquery-ui-progressbar-js"></script>
-        <script type="text/javascript" src="../wp-includes/js/jquery/ui/tooltip.min.js" id="jquery-ui-tooltip-js"></script>
+        <script type="text/javascript" src="../wp-includes/js/jquery/ui/core.min.js?ver=1.12.1" id="jquery-ui-core-js"></script>
+        <script type="text/javascript" src="../wp-includes/js/jquery/ui/progressbar.min.js?ver=1.12.1" id="jquery-ui-progressbar-js"></script>
+        <script type="text/javascript" src="../wp-includes/js/jquery/ui/tooltip.min.js?ver=1.12.1" id="jquery-ui-tooltip-js"></script>
 
 
         <!-- W3TC-include-js-head -->
@@ -367,11 +480,12 @@
             $("body").css({
                 minHeight: screen.height
             });
-        </script><script src="http://cdn.livechatinc.com/tracking.js" defer=""></script>
+        </script>
+        <script src="http://cdn.livechatinc.com/tracking.js" defer=""></script>
 
         <div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
         <div id="chat-widget-container" style="opacity: 1; visibility: visible; z-index: 2147483639; position: fixed; bottom: 0px; width: 281px; height: 63px; max-width: 100%; max-height: calc(100% - 0px); min-height: 0px; min-width: 0px; background-color: transparent; border: 0px; overflow: hidden; right: 0px; transition: none 0s ease 0s !important;">
-            <iframe allow="autoplay; microphone *; camera *; display-capture *; picture-in-picture *; fullscreen *;" src="https://secure.livechatinc.com/customer/action/open_chat?license_id=7150681&amp;group=6&amp;embedded=1&amp;widget_version=3&amp;unique_groups=0" allowtransparency="true" id="chat-widget" name="chat-widget" title="LiveChat chat widget" scrolling="no" style="width: 100%; height: 100%; min-height: 0px; min-width: 0px; margin: 0px; padding: 0px; background-image: none; background-position: 0% 0%; background-size: initial; background-attachment: scroll; background-origin: initial; background-clip: initial; background-color: rgba(0, 0, 0, 0); border-width: 0px; float: none; position: absolute; inset: 0px; transition: none 0s ease 0s !important;"></iframe>
+            <iframe allow="autoplay; microphone *; camera *; display-capture *; picture-in-picture *; fullscreen *;" src="https://secure.livechatinc.com/customer/action/open_chat?license_id=10840387&amp;group=6&amp;embedded=1&amp;widget_version=3&amp;unique_groups=0" allowtransparency="true" id="chat-widget" name="chat-widget" title="LiveChat chat widget" scrolling="no" style="width: 100%; height: 100%; min-height: 0px; min-width: 0px; margin: 0px; padding: 0px; background-image: none; background-position: 0% 0%; background-size: initial; background-attachment: scroll; background-origin: initial; background-clip: initial; background-color: rgba(0, 0, 0, 0); border-width: 0px; float: none; position: absolute; inset: 0px; transition: none 0s ease 0s !important;"></iframe>
         </div>
         <div id="livechat-eye-catcher" style="position: fixed; visibility: visible; z-index: 2147483639; background: transparent; border: 0px; padding: 10px 10px 0px 0px; float: left; margin-right: -10px; backface-visibility: hidden; bottom: 40px; right: 48px;">
             <div style="position: absolute; display: none; top: -5px; right: -5px; width: 16px; line-height: 16px; text-align: center; cursor: pointer; text-decoration: none; color: rgb(0, 0, 0); font-size: 20px; font-family: Arial, sans-serif; border-radius: 50%; background-color: rgba(255, 255, 255, 0.5);">
