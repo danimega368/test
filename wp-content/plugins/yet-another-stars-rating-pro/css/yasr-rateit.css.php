@@ -114,7 +114,7 @@ div.medium .rateit-selected
 div.bigstars .rateit-range
 {
     /*White*/
-    background: url(http://112.140.186.56/wp-content/plugins/yet-another-stars-rating-pro/img/stars/1_yasr_default/stars_32.png ) left 0px ; 
+    background: url(../wp-content/plugins/yet-another-stars-rating-pro/img/stars/1_yasr_default/stars_32.png ) left 0px ; 
     width: 32px; 
     height: 32px;
 }
@@ -122,7 +122,7 @@ div.bigstars .rateit-range
 div.bigstars .rateit-hover
 {
     /*red*/
-    background: url(http://112.140.186.56/wp-content/plugins/yet-another-stars-rating-pro/img/stars/1_yasr_default/stars_32.png ) left -37px ; 
+    background: url(../wp-content/plugins/yet-another-stars-rating-pro/img/stars/1_yasr_default/stars_32.png ) left -37px ; 
     width: 32px; 
     height: 32px;
     display: none
@@ -131,7 +131,7 @@ div.bigstars .rateit-hover
 div.bigstars .rateit-selected
 {
     /*Gold*/
-    background: url(http://112.140.186.56/wp-content/plugins/yet-another-stars-rating-pro/img/stars/1_yasr_default/stars_32.png ) left -74px ; 
+    background: url(../wp-content/plugins/yet-another-stars-rating-pro/img/stars/1_yasr_default/stars_32.png ) left -74px ; 
     width: 32px; 
     height: 32px;
 }
